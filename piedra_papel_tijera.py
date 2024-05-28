@@ -25,6 +25,11 @@ print("JUEGO : Piedra, papel y tijera")
 while True:
     opcionJugar = input("Quieres jugar? (s/n): ")
     if 's' in opcionJugar.lower():
+        nombreUsuario = str(input('Nombre del usuario: '))
+
+        if len(nombreUsuario) < 3:
+            raise Exception('El nombre del usuario no puede tener menos de 3 caracteres')
+
         opcionMovimientoOrdenador = opcionOrdenador()
         opcionMovimientoUsuario = input(
             "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras): ").lower()
@@ -36,9 +41,9 @@ while True:
                 opcionMovimientoUsuario = papel
             elif 't' in opcionMovimientoUsuario and 't' in opcionMovimientoUsuario:
                 opcionMovimientoUsuario = tijera
-            print(f"Elección del usuario: {opcionMovimientoUsuario}")
+            print(f"Elección del usuario {nombreUsuario}: {opcionMovimientoUsuario}")
             if ganadorMovimiento(opcionMovimientoUsuario, opcionMovimientoOrdenador) == 1:
-                print("Gana el usuario !!!")
+                print(f"Gana el usuario {nombreUsuario}!!!")
             elif ganadorMovimiento(opcionMovimientoUsuario, opcionMovimientoOrdenador) == -1:
                 print("Gana el ordenador !!!")
             elif ganadorMovimiento(opcionMovimientoUsuario, opcionMovimientoOrdenador) == 0:
