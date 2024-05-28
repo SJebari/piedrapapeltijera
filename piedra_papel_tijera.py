@@ -3,9 +3,12 @@ import random
 piedra = 'piedra'
 papel = 'papel'
 tijera = 'tijera'
-opcionesMovimientos = [piedra, papel, tijera]
-ganaUsuario = [[papel, piedra], [tijera, papel], [piedra, tijera]]
-ganaOrdenador = [[piedra, papel], [papel, tijera], [tijera, piedra]]
+lagarto = 'lagarto'
+opcionesMovimientos = [piedra, papel, tijera, lagarto]
+ganaUsuario = [[papel, piedra], [tijera, papel], [piedra, tijera],
+               [lagarto, papel], [piedra, lagarto], [tijera, lagarto]]
+ganaOrdenador = [[piedra, papel], [papel, tijera], [tijera, piedra],
+                 [papel, lagarto], [lagarto, piedra], [lagarto, tijera]]
 
 
 def opcionOrdenador():
@@ -27,15 +30,19 @@ while True:
     if 's' in opcionJugar.lower():
         opcionMovimientoOrdenador = opcionOrdenador()
         opcionMovimientoUsuario = input(
-            "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras / 'TERMINAR' para "
+            "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras / 'l' para lagarto / "
+            "'TERMINAR' para"
             "terminar): ").lower()
-        if opcionMovimientoUsuario == 'p' or opcionMovimientoUsuario == 'a' or opcionMovimientoUsuario == 't':
+        if (opcionMovimientoUsuario == 'p' or opcionMovimientoUsuario == 'a'
+                or opcionMovimientoUsuario == 't' or opcionMovimientoUsuario == 'l'):
             if 'p' in opcionMovimientoUsuario and 'p' in opcionMovimientoUsuario:
                 opcionMovimientoUsuario = piedra
             elif 'a' in opcionMovimientoUsuario and 'a' in opcionMovimientoUsuario:
                 opcionMovimientoUsuario = papel
             elif 't' in opcionMovimientoUsuario and 't' in opcionMovimientoUsuario:
                 opcionMovimientoUsuario = tijera
+            elif 'l' in opcionMovimientoUsuario and 'l' in opcionMovimientoUsuario:
+                opcionMovimientoUsuario = lagarto
             print(f"Elección del usuario: {opcionMovimientoUsuario}")
             print(f"Elección del ordenador: {opcionMovimientoOrdenador}")
             if ganadorMovimiento(opcionMovimientoUsuario, opcionMovimientoOrdenador) == 1:
