@@ -1,4 +1,8 @@
 import random
+"""
+.. include:: README.md
+"""
+
 
 piedra = 'piedra'
 papel = 'papel'
@@ -12,11 +16,22 @@ ganaOrdenador = [[piedra, papel], [papel, tijera], [tijera, piedra],
 
 
 def opcionOrdenador():
+    """
+    Funcion la cual escoge el movimiento del ordenador aleatoriamente
+    :return: list
+    """
+
     movimientoOrdenador = random.choice(opcionesMovimientos)
     return movimientoOrdenador
 
 
 def ganadorMovimiento(usuarioMovimiento, ordenadorMovimiento):
+    """
+    Funcion que determina si gana el usuario o el ordenador
+    :param usuarioMovimiento: list
+    :param ordenadorMovimiento: list
+    :return:
+    """
     if [usuarioMovimiento, ordenadorMovimiento] in ganaUsuario:
         return 1
     elif [usuarioMovimiento, ordenadorMovimiento] in ganaOrdenador:
